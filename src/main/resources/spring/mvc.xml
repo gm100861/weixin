@@ -10,17 +10,35 @@
 	<!-- 扫描包，使@Controller生效 -->
 	<context:component-scan base-package="org.linuxsogood.weixin.controller"/>
 	
+	<!-- mvc的注解驱动 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- 文本MessageConverter  -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="UTF-8"/>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	
     <!-- 视图解析器，根据视图的名称new ModelAndView(name)，在配置文件查找对应的bean配置 -->  
-    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">  
+  <!--   <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">  
         <property name="order" value="1"/>  
-    </bean>  
-
+    </bean>   
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>  
     </bean> 
+    -->
      
  <!-- 配置Jaxb2的marshaller的视图  -->
- <bean name="jaxb2MarshallingView" class="org.springframework.web.servlet.view.xml.MarshallingView">  
+ <!-- <bean name="jaxb2MarshallingView" class="org.springframework.web.servlet.view.xml.MarshallingView">  
   <constructor-arg>  
       <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">  
           <property name="classesToBeBound">  
@@ -31,6 +49,6 @@
       </bean>  
   </constructor-arg>  
 </bean>  
-    
+     -->
     
 </beans>
