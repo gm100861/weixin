@@ -22,7 +22,7 @@
 	</bean>
 	
 	<!-- 扫描包 -->
-	<context:component-scan base-package="org.linuxsogood." />
+	<context:component-scan base-package="org.linuxsogood.weixin" />
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
