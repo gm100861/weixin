@@ -3,10 +3,10 @@
  */
 package org.linuxsogood.weixin.utils;
 
-import java.util.Arrays;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 /**
  * @author Administrator
@@ -14,13 +14,13 @@ import org.slf4j.LoggerFactory;
  */
 public class CheckUtils {
 	private static final Logger log = LoggerFactory.getLogger(CheckUtils.class);
-	//ÔÚÎ¢ĞÅ¹«ÖÚÆ½Ì¨ÖĞĞ´µÄtoken
+	//åœ¨å¾®ä¿¡å…¬ä¼—å¹³å°ä¸­å†™çš„token
 	private static final String token = "JustJava";
 	/**
-	 * ¼ÓÃÜ/Ğ£ÑéÁ÷³ÌÈçÏÂ£º
-	 * 	1. ½«token¡¢timestamp¡¢nonceÈı¸ö²ÎÊı½øĞĞ×ÖµäĞòÅÅĞò
-	 *	2. ½«Èı¸ö²ÎÊı×Ö·û´®Æ´½Ó³ÉÒ»¸ö×Ö·û´®½øĞĞsha1¼ÓÃÜ
-	 *	3. ¿ª·¢Õß»ñµÃ¼ÓÃÜºóµÄ×Ö·û´®¿ÉÓësignature¶Ô±È£¬±êÊ¶¸ÃÇëÇóÀ´Ô´ÓÚÎ¢ĞÅ
+	 * åŠ å¯†/æ ¡éªŒæµç¨‹å¦‚ä¸‹ï¼š
+	 * 	1. å°†tokenã€timestampã€nonceä¸‰ä¸ªå‚æ•°è¿›è¡Œå­—å…¸åºæ’åº
+	 *	2. å°†ä¸‰ä¸ªå‚æ•°å­—ç¬¦ä¸²æ‹¼æ¥æˆä¸€ä¸ªå­—ç¬¦ä¸²è¿›è¡Œsha1åŠ å¯†
+	 *	3. å¼€å‘è€…è·å¾—åŠ å¯†åçš„å­—ç¬¦ä¸²å¯ä¸signatureå¯¹æ¯”ï¼Œæ ‡è¯†è¯¥è¯·æ±‚æ¥æºäºå¾®ä¿¡
 	 * @param signature
 	 * @param timestamp
 	 * @param nonce
@@ -28,10 +28,10 @@ public class CheckUtils {
 	 */
 	public static boolean checkSignature(String signature,String timestamp,String nonce){
 		try {
-			//°´ÕÕ×Ö¶Î½øĞĞÅÅĞò
+			//æŒ‰ç…§å­—æ®µè¿›è¡Œæ’åº
 			String[] arr = {token,timestamp,nonce};
 			Arrays.sort(arr);
-			//SHA1¼ÓÃÜ²¢¶Ô±ÈÓësignatureÊÇ·ñÒ»ÖÂ
+			//SHA1åŠ å¯†å¹¶å¯¹æ¯”ä¸signatureæ˜¯å¦ä¸€è‡´
 			StringBuffer sb = new StringBuffer();
 			for (int i = 0; i < arr.length; i++) {
 				sb.append(arr[i]);
@@ -40,7 +40,7 @@ public class CheckUtils {
 			return signature.equals(encode);
 		} catch (Exception e) {
 			if(log.isErrorEnabled()){
-				log.error("¼ìÑéÇ©ÃûµÄÊ±ºò³öÏÖÒì³££º"+e.getMessage());
+				log.error("æ£€éªŒç­¾åçš„æ—¶å€™å‡ºç°å¼‚å¸¸ï¼š"+e.getMessage());
 			}
 		}
 		return false;

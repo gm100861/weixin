@@ -1,58 +1,53 @@
-/**
- * linuxsogood.org
- * Copyright (c) 2014-2024 GaoXin,Inc.All Rights Reserved.
- */
 package org.linuxsogood.weixin.service;
 
 import org.linuxsogood.weixin.entity.WxMessageText;
-
 /**
- * 
+ *
  * @author gm100861, </br> gm100861@gmail.com
  * @see org.linuxsogood.weixin.service.TextMessageService
- * @version	V0.0.1-SNAPSHOT, 2015Äê6ÔÂ10ÈÕ ÏÂÎç1:13:28
+ * @version	V0.0.1-SNAPSHOT, 2015å¹´6æœˆ10æ—¥ ä¸‹åˆ1:13:28
  * @description
- * 
+ *
  */
 public interface TextMessageService {
-	
+
 	/**
-	 * @description ·µ»ØÒ»Ìõ²âÊÔÏûÏ¢
-	 * @param message ·¢¹ıÀ´µÄÏûÏ¢ÊµÌåÀà
-	 * @return xml¸ñÊ½
+	 * @description è¿”å›ä¸€æ¡æµ‹è¯•æ¶ˆæ¯
+	 * @param message å‘è¿‡æ¥çš„æ¶ˆæ¯å®ä½“ç±»
+	 * @return xmlæ ¼å¼
 	 */
 	String testMessage(WxMessageText message);
-	
+
 	/**
-	 * @description ÉèÖÃÒª·µ»ØµÄxmlµÄÄÚÈİ
+	 * @description è®¾ç½®è¦è¿”å›çš„xmlçš„å†…å®¹
 	 * @param content
 	 * @return
 	 */
 	String setContent(WxMessageText message,String content);
 
 	/**
-	 * @description ·µ»ØÑ¡ÏîÎ´Öª
+	 * @description è¿”å›é€‰é¡¹æœªçŸ¥
 	 * @param message
 	 * @return
 	 */
 	String unknowMessage(WxMessageText message);
 
 	/**
-	 * @description ºÅÂë±»¶©ÔÄµÄ´¦ÀíÂß¼­
+	 * @description å·ç è¢«è®¢é˜…çš„å¤„ç†é€»è¾‘
 	 * @return
 	 */
 	String subscribe(WxMessageText message);
-	
+
 	/**
 	 *
-	 * @description »ñÈ¡ÌìÆøĞÅÏ¢
+	 * @description è·å–å¤©æ°”ä¿¡æ¯
 	 * @param message
 	 * @return
 	 */
 	String getWeather(WxMessageText message);
 
 	/**
-	 * @description Ëæ»ú·µ»ØÒ»¸öĞ¦»°
+	 * @description éšæœºè¿”å›ä¸€ä¸ªç¬‘è¯
 	 * @param message
 	 * @return
 	 */

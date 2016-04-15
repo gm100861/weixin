@@ -1,64 +1,61 @@
 package org.linuxsogood.weixin.utils;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.core.util.QuickWriter;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
+import com.thoughtworks.xstream.io.xml.XppDriver;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.linuxsogood.weixin.entity.WxMessageText;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.core.util.QuickWriter;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
-import com.thoughtworks.xstream.io.xml.XppDriver;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 
  * @see org.linuxsogood.weixin.utils.MessageUtils
- * @version	V0.0.1-SNAPSHOT, 2015Äê6ÔÂ9ÈÕ ÉÏÎç11:44:05
- * @description Î¢ĞÅÏûÏ¢ÎÄ±¾×ª»»¹¤¾ß
+ * @version	V0.0.1-SNAPSHOT, 2015å¹´6æœˆ9æ—¥ ä¸Šåˆ11:44:05
+ * @description å¾®ä¿¡æ¶ˆæ¯æ–‡æœ¬è½¬æ¢å·¥å…·
  * 
  */
 public class MessageUtils {
 
 	/**
-	 * @description ´ÓÇëÇóÖĞ¶ÁÈ¡Î¢ĞÅÍÆËÍ¹ıÀ´µÄÏûÏ¢ÄÚÈİ,ÏûÏ¢ÄÚÈİÊÇxml¸ñÊ½µÄ,ËùÒÔĞèÒª°ÑÏûÏ¢×ª»»Îªmap¸ñÊ½À´´¦Àí
-	 * @param request HTTPÇëÇóÌå
-	 * @return ·µ»Ø×ª»»ÎªmapµÄ½á¹û
+	 * @description ä»è¯·æ±‚ä¸­è¯»å–å¾®ä¿¡æ¨é€è¿‡æ¥çš„æ¶ˆæ¯å†…å®¹,æ¶ˆæ¯å†…å®¹æ˜¯xmlæ ¼å¼çš„,æ‰€ä»¥éœ€è¦æŠŠæ¶ˆæ¯è½¬æ¢ä¸ºmapæ ¼å¼æ¥å¤„ç†
+	 * @param request HTTPè¯·æ±‚ä½“
+	 * @return è¿”å›è½¬æ¢ä¸ºmapçš„ç»“æœ
 	 * @throws DocumentException
 	 * @throws IOException
 	 */
 	public static Map<String,String> xmlToMap(HttpServletRequest request) throws DocumentException, IOException {
-		//´´½¨Ò»¸öÓÃÓÚ±£´æ×ª»»Êı¾İµÄmap
+		//åˆ›å»ºä¸€ä¸ªç”¨äºä¿å­˜è½¬æ¢æ•°æ®çš„map
 		Map<String,String> map = new HashMap<String, String>();
-		//´´½¨Ò»¸ösaxµÄ½âÎöÆ÷
+		//åˆ›å»ºä¸€ä¸ªsaxçš„è§£æå™¨
 		SAXReader reader = new SAXReader();
-		//Ê¹ÓÃ½âÎöÆ÷´ÓÇëÇóÁ÷ÖĞ»ñÈ¡ÎÄµµ
+		//ä½¿ç”¨è§£æå™¨ä»è¯·æ±‚æµä¸­è·å–æ–‡æ¡£
 		Document document = reader.read(request.getInputStream());
-		//»ñÈ¡ÎÄµµµÄ¸ùÔªËØ
+		//è·å–æ–‡æ¡£çš„æ ¹å…ƒç´ 
 		Element rootElement = document.getRootElement();
-		//ÄÃµ½¸ùÔªËØºó»ñÈ¡Õû¸öÎÄµµµÄÄÚÈİ
+		//æ‹¿åˆ°æ ¹å…ƒç´ åè·å–æ•´ä¸ªæ–‡æ¡£çš„å†…å®¹
 		List<Element> list = rootElement.elements();
-		//±éÀúÎÄµµµÄËùÓĞÄÚÈİ²¢·ÅÈëmapÖĞ
+		//éå†æ–‡æ¡£çš„æ‰€æœ‰å†…å®¹å¹¶æ”¾å…¥mapä¸­
 		for (Element element : list) {
-			map.put(element.getName(), element.getText());	
+			map.put(element.getName(), element.getText());
 		}
 		return map;
 	}
-	
+
 	/**
-	/**
-	 * ÎÄ±¾ÏûÏ¢¶ÔÏó×ª»»³Éxml
-	 * 
-	 * @param textMessage ÎÄ±¾ÏûÏ¢¶ÔÏó
+	 * æ–‡æœ¬æ¶ˆæ¯å¯¹è±¡è½¬æ¢æˆxml
+	 *
+	 * @param textMessage æ–‡æœ¬æ¶ˆæ¯å¯¹è±¡
 	 * @return xml
 	 */
 	public static String textMessageToXml(WxMessageText textMessage) {
@@ -69,7 +66,7 @@ public class MessageUtils {
 	private static XStream xstream = new XStream(new XppDriver() {
 		public HierarchicalStreamWriter createWriter(Writer out) {
 			return new PrettyPrintWriter(out) {
-				// ¶ÔËùÓĞxml½ÚµãµÄ×ª»»¶¼Ôö¼ÓCDATA±ê¼Ç
+				// å¯¹æ‰€æœ‰xmlèŠ‚ç‚¹çš„è½¬æ¢éƒ½å¢åŠ CDATAæ ‡è®°
 				boolean cdata = true;
 
 				@SuppressWarnings("unchecked")

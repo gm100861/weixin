@@ -4,15 +4,6 @@
  */
 package org.linuxsogood.weixin.utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -24,30 +15,39 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
  * 
  * @author gm100861, </br> gm100861@gmail.com
  * @see org.linuxsogood.weixin.utils.HTTPUtils
- * @version	V0.0.1-SNAPSHOT, 2015Äê6ÔÂ10ÈÕ ÏÂÎç2:20:28
+ * @version	V0.0.1-SNAPSHOT, 2015å¹´6æœˆ10æ—¥ ä¸‹åˆ2:20:28
  * @description
  * 
  */
 public class HTTPUtils {
 
 	/**
-	 * @description ÓÃÓÚ·¢ÆğHTTPÇëÇó
-	 * @param url	ÒªÇëÇóµÄURL
-	 * @param params	ÇëÇóµÄ²ÎÊı
-	 * @param headers	ÇëÇóÒª¼ÓµÄÍ·ĞÅÏ¢
-	 * @return	·µ»ØÇëÇóµÄ½á¹û
-	 * @throws IOException 
-	 * @throws ClientProtocolException 
+	 * @description ç”¨äºå‘èµ·HTTPè¯·æ±‚
+	 * @param url	è¦è¯·æ±‚çš„URL
+	 * @param params	è¯·æ±‚çš„å‚æ•°
+	 * @param headers	è¯·æ±‚è¦åŠ çš„å¤´ä¿¡æ¯
+	 * @return	è¿”å›è¯·æ±‚çš„ç»“æœ
+	 * @throws IOException
+	 * @throws ClientProtocolException
 	 */
 	public static String get(String url,Map<String,String> params,Map<String,String> headers) throws ClientProtocolException, IOException{
 		HttpClient httpClient = new DefaultHttpClient();
-		
+
 		/**
-		 * ´¦Àíparams
+		 * å¤„ç†params
 		 */
 		String par = "";
 		if(params != null && params.size() != 0) {
@@ -60,7 +60,7 @@ public class HTTPUtils {
 		HttpGet httpGet = par.equals("") ? new HttpGet(url) : new HttpGet(url + "?" + par);
 		httpGet.addHeader(new BasicHeader("Content-type", "text/html; charset=utf-8"));
 		/**
-		 * ´¦Àí´«¹ıÀ´µÄheader
+		 * å¤„ç†ä¼ è¿‡æ¥çš„header
 		 */
 		if(headers != null && headers.size() != 0){
 			for (Entry<String, String> entry : headers.entrySet()) {

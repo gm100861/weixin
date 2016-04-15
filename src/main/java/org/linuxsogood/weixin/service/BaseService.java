@@ -4,21 +4,21 @@
  */
 package org.linuxsogood.weixin.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.linuxsogood.weixin.entity.WxMessageText;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
- * 
+ *
  * @author gm100861, </br> gm100861@gmail.com
  * @see org.linuxsogood.weixin.service.BaseService
- * @version	V0.0.1-SNAPSHOT, 2015Äê6ÔÂ10ÈÕ ÏÂÎç12:53:45
- * @description »ù´¡·şÎñÀà
- * 
+ * @version	V0.0.1-SNAPSHOT, 2015å¹´6æœˆ10æ—¥ ä¸‹åˆ12:53:45
+ * @description åŸºç¡€æœåŠ¡ç±»
+ *
  */
 public interface BaseService {
 	/**
-	 * @description °ÑÎ¢ĞÅÍÆËÍ¹ıÀ´µÄxml×ª»»ÎªMessageTextÊµÌå
+	 * @description æŠŠå¾®ä¿¡æ¨é€è¿‡æ¥çš„xmlè½¬æ¢ä¸ºMessageTextå®ä½“
 	 * @param request
 	 * @return
 	 */
