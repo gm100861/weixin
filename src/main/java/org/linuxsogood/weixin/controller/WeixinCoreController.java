@@ -3,8 +3,6 @@
  */
 package org.linuxsogood.weixin.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.linuxsogood.weixin.entity.User;
 import org.linuxsogood.weixin.entity.WxMessageText;
 import org.linuxsogood.weixin.entity.WxMessageType;
@@ -22,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author Honway
  *
@@ -30,37 +30,37 @@ import org.springframework.web.servlet.ModelAndView;
 public class WeixinCoreController {
 
 	private static final Logger log = LoggerFactory.getLogger(WeixinCoreController.class);
-	
+
 	@Autowired
 	private BaseService baseService;
-	
+
 	@Autowired
 	private TextMessageService textService;
-	
+
 	/**
-	 * @description ½ÓÊÕÎ¢ĞÅÍÆËÍ¹ıÀ´µÄÏûÏ¢µÄÖ÷¿ØÖÆÆ÷,ÓÃÓÚ¶ÔÎ¢ĞÅÍÆËÍ¹ıÀ´µÄÏûÏ¢½øĞĞ¸÷ÖÖ´¦Àí
-	 * @param message  ÓÃÓÚ·â×°Î¢ĞÅÍÆËÍ¹ıÀ´µÄÏûÏ¢ÊµÌå
+	 * @description æ¥æ”¶å¾®ä¿¡æ¨é€è¿‡æ¥çš„æ¶ˆæ¯çš„ä¸»æ§åˆ¶å™¨,ç”¨äºå¯¹å¾®ä¿¡æ¨é€è¿‡æ¥çš„æ¶ˆæ¯è¿›è¡Œå„ç§å¤„ç†
+	 * @param message  ç”¨äºå°è£…å¾®ä¿¡æ¨é€è¿‡æ¥çš„æ¶ˆæ¯å®ä½“
 	 * @return
 	 */
-	
+
 	@SuppressWarnings("unused")
 	@RequestMapping(value="/callback",method=RequestMethod.POST)
 	public ResponseEntity<String> wxCoreController(HttpServletRequest request,WxMessageText message){
 		try {
 			message = baseService.xmlToEntity(request);
 			if(message == null){
-				log.error("·Ç·¨µÄÇëÇó");
-				log.error("ÇëÇóÕßµÄIP:"+request.getRemoteHost());
+				log.error("éæ³•çš„è¯·æ±‚");
+				log.error("è¯·æ±‚è€…çš„IP:"+request.getRemoteHost());
 				return null;
 			}
 			/**
-			 * Èç¹ûÏûÏ¢ÊÇÎÄ±¾ÏûÏ¢µÄ´¦Àí
+			 * å¦‚æœæ¶ˆæ¯æ˜¯æ–‡æœ¬æ¶ˆæ¯çš„å¤„ç†
 			 */
-			log.info("¿ªÊ¼ÅĞ¶ÏÏûÏ¢µÄÀàĞÍ"+message.getMsgType());
+			log.info("å¼€å§‹åˆ¤æ–­æ¶ˆæ¯çš„ç±»å‹"+message.getMsgType());
 			System.out.println(message.getEvent());
 			if(message.getMsgType().equals(WxMessageType.TEXT)){
-				log.info("½ÓÊÕµ½µÄÏûÏ¢ÊÇÒ»ÌõÎÄ±¾ÏûÏ¢,¿ªÊ¼¶ÔÕâÌõÏûÏ¢½øĞĞ´¦Àí,ÏûÏ¢±àºÅÎª:"+message.getMsgId());
-				//¸ù¾İÓÃ»§ÊäÈëµÄÑ¡Ïî²»Í¬×ö²»Í¬µÄ´¦Àí
+				log.info("æ¥æ”¶åˆ°çš„æ¶ˆæ¯æ˜¯ä¸€æ¡æ–‡æœ¬æ¶ˆæ¯,å¼€å§‹å¯¹è¿™æ¡æ¶ˆæ¯è¿›è¡Œå¤„ç†,æ¶ˆæ¯ç¼–å·ä¸º:"+message.getMsgId());
+				//æ ¹æ®ç”¨æˆ·è¾“å…¥çš„é€‰é¡¹ä¸åŒåšä¸åŒçš„å¤„ç†
 				if(message.getContent().equals("1")){
 					String xml = textService.getWeather(message);
 					return new ResponseEntity<String>(xml,HttpStatus.OK);
@@ -70,52 +70,52 @@ public class WeixinCoreController {
 				}
 				String xml = textService.unknowMessage(message);
 				return new ResponseEntity<String>(xml,HttpStatus.OK);
-				//ÊÇÊÂ¼şÀàĞÍµÄ
+				//æ˜¯äº‹ä»¶ç±»å‹çš„
 			}else if(message.getMsgType().equals(WxMessageType.REQ_MESSAGE_TYPE_EVENT)){
-				//Èç¹ûÊÇ±»¹Ø×¢
+				//å¦‚æœæ˜¯è¢«å…³æ³¨
 				if(message.getEvent().equals(WxMessageType.EVENT_TYPE_SUBSCRIBE));
-				//ºÅÂë±»¶©ÔÄµÄÊÂ¼ş
+				//å·ç è¢«è®¢é˜…çš„äº‹ä»¶
 				String xml = textService.subscribe(message);
 				return new ResponseEntity<String>(xml,HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			if(log.isErrorEnabled()){
-				log.error("controllerÔÚÖ´ĞĞÊ±³öÏÖÒì³£"+e.getMessage());
+				log.error("controlleråœ¨æ‰§è¡Œæ—¶å‡ºç°å¼‚å¸¸"+e.getMessage());
 			}
 		}
 		return new ResponseEntity<String>("",HttpStatus.BAD_REQUEST);
 	}
-	
-	
+
+
 	/**
-	 * Î¢ĞÅ½ÓÈëµÄ·½·¨£¬Î¢ĞÅ»áµ÷ÓÃÕâ¸ö·½·¨£¬²¢ÇÒĞèÒªÔ­Ñù·µ»ØechostrµÄÖµ
-	 * @param signature Î¢ĞÅ¼ÓÃÜÇ©Ãû£¬signature½áºÏÁË¿ª·¢ÕßÌîĞ´µÄtoken²ÎÊıºÍÇëÇóÖĞµÄtimestamp²ÎÊı¡¢nonce²ÎÊı¡£
-	 * @param timestamp Ê±¼ä´Á
-	 * @param nonce Ëæ»úÊı
-	 * @param echostr Ëæ»ú×Ö·û´®
+	 * å¾®ä¿¡æ¥å…¥çš„æ–¹æ³•ï¼Œå¾®ä¿¡ä¼šè°ƒç”¨è¿™ä¸ªæ–¹æ³•ï¼Œå¹¶ä¸”éœ€è¦åŸæ ·è¿”å›echostrçš„å€¼
+	 * @param signature å¾®ä¿¡åŠ å¯†ç­¾åï¼Œsignatureç»“åˆäº†å¼€å‘è€…å¡«å†™çš„tokenå‚æ•°å’Œè¯·æ±‚ä¸­çš„timestampå‚æ•°ã€nonceå‚æ•°ã€‚
+	 * @param timestamp æ—¶é—´æˆ³
+	 * @param nonce éšæœºæ•°
+	 * @param echostr éšæœºå­—ç¬¦ä¸²
 	 * @return
 	 */
 	//@RequestMapping(value="/callback")
 	public ResponseEntity<String> wxDeveloperCheck(String signature,String timestamp,String nonce,String echostr){
 		HttpHeaders headers = new HttpHeaders();
 		try {
-			log.info("¿ªÊ¼¸ù¾İ´«µİ¹ıÀ´µÄ²ÎÊı¼ìÑéÇ©Ãû");
+			log.info("å¼€å§‹æ ¹æ®ä¼ é€’è¿‡æ¥çš„å‚æ•°æ£€éªŒç­¾å");
 			log.info("signature:"+signature+",timestamp:"+timestamp+",nonce:"+nonce+",echostr"+echostr);
 			if(CheckUtils.checkSignature(signature, timestamp, nonce)){
-				log.info("Ç©Ãû¼ìÑé³É¹¦");
-				return new ResponseEntity<String>(echostr,headers,HttpStatus.OK); 
+				log.info("ç­¾åæ£€éªŒæˆåŠŸ");
+				return new ResponseEntity<String>(echostr,headers,HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			if(log.isErrorEnabled()){
-				log.error("controllerÔÚÑéÖ¤Ç©ÃûµÄÊ±ºòÖ´ĞĞÒì³££º"+e.getMessage());
+				log.error("controlleråœ¨éªŒè¯ç­¾åçš„æ—¶å€™æ‰§è¡Œå¼‚å¸¸ï¼š"+e.getMessage());
 			}
 		}
-		log.info("Ç©Ãû¼ìÑéÊ§°Ü");
+		log.info("ç­¾åæ£€éªŒå¤±è´¥");
 		return new ResponseEntity<String>("",headers,HttpStatus.OK);
 	}
-	
+
 	/**
-	 * ²âÊÔÄÜ²»ÄÜ·µ»ØXML
+	 * æµ‹è¯•èƒ½ä¸èƒ½è¿”å›XML
 	 * @description {TODO}
 	 * @return
 	 */
@@ -123,7 +123,7 @@ public class WeixinCoreController {
 	public ModelAndView coreReq(){
 		ModelAndView mv = new ModelAndView("jaxb2MarshallingView");
 		User user = new User();
-		user.setAddress("ÉÏº£ÊĞ");
+		user.setAddress("ä¸Šæµ·å¸‚");
 		user.setId("001");
 		user.setJob("Information Engenner");
 		user.setNickname("Tommash");

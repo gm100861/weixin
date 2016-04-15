@@ -6,140 +6,140 @@ package org.linuxsogood.weixin.entity;
 
 
 /**
- * 
+ *
  * @author gm100861, </br> gm100861@gmail.com
  * @see org.linuxsogood.weixin.entity.WxMessageText
- * @version	V0.0.1-SNAPSHOT, 2015Äê6ÔÂ9ÈÕ ÉÏÎç11:57:07
- * @description	Î¢ĞÅ·¢¹ıÀ´µÄÏûÏ¢ÊµÌå
- * 
+ * @version	V0.0.1-SNAPSHOT, 2015å¹´6æœˆ9æ—¥ ä¸Šåˆ11:57:07
+ * @description	å¾®ä¿¡å‘è¿‡æ¥çš„æ¶ˆæ¯å®ä½“
+ *
  */
 public class WxMessageText {
 
 	/**
-	 * ¿ª·¢ÕßÎ¢ĞÅºÅ
+	 * å¼€å‘è€…å¾®ä¿¡å·
 	 */
 	private String ToUserName;
-	
+
 	/**
-	 * ·¢ËÍ·½ÕÊºÅ£¨Ò»¸öOpenID£©
+	 * å‘é€æ–¹å¸å·ï¼ˆä¸€ä¸ªOpenIDï¼‰
 	 */
 	private String FromUserName;
-	
+
 	/**
-	 * ÏûÏ¢´´½¨Ê±¼ä £¨ÕûĞÍ£©
+	 * æ¶ˆæ¯åˆ›å»ºæ—¶é—´ ï¼ˆæ•´å‹ï¼‰
 	 */
 	private String CreateTime;
-	
+
 	/**
-	 * ÏûÏ¢ÀàĞÍ
+	 * æ¶ˆæ¯ç±»å‹
 	 */
 	private String MsgType;
-	
+
 	/**
-	 * ÎÄ±¾ÏûÏ¢ÄÚÈİ
+	 * æ–‡æœ¬æ¶ˆæ¯å†…å®¹
 	 */
 	private String Content;
-	
+
 	/**
-	 * ÏûÏ¢id£¬64Î»ÕûĞÍ
+	 * æ¶ˆæ¯idï¼Œ64ä½æ•´å‹
 	 */
 	private String MsgId;
-	
+
 	/**
-	 * ¹Ø×¢/È¡Ïû¹Ø×¢ÊÂ¼ş
+	 * å…³æ³¨/å–æ¶ˆå…³æ³¨äº‹ä»¶
 	 */
 	private String Event;
-	
+
 	/**
-	 * ÊÂ¼şKEYÖµ
+	 * äº‹ä»¶KEYå€¼
 	 */
 	private String EventKey;
-	
+
 	/**
-	 * ¶şÎ¬ÂëµÄticket£¬¿ÉÓÃÀ´»»È¡¶şÎ¬ÂëÍ¼Æ¬
+	 * äºŒç»´ç çš„ticketï¼Œå¯ç”¨æ¥æ¢å–äºŒç»´ç å›¾ç‰‡
 	 */
 	private String Ticket;
-	
+
 	/**
-	 * µØÀíÎ»ÖÃÎ³¶È
+	 * åœ°ç†ä½ç½®çº¬åº¦
 	 */
 	private String Latitude;
-	
+
 	/**
-	 * µØÀíÎ»ÖÃ¾­¶È
+	 * åœ°ç†ä½ç½®ç»åº¦
 	 */
 	private String Longitude;
-	
+
 	/**
-	 * µØÀíÎ»ÖÃ¾«¶È
+	 * åœ°ç†ä½ç½®ç²¾åº¦
 	 */
 	private String Precision;
-	
+
 	/**
-	 * Í¨¹ıÉÏ´«¶àÃ½ÌåÎÄ¼ş£¬µÃµ½µÄid
+	 * é€šè¿‡ä¸Šä¼ å¤šåª’ä½“æ–‡ä»¶ï¼Œå¾—åˆ°çš„id
 	 */
 	private String MediaId;
-	
+
 	/**
-	 * ÏûÏ¢µÄ±êÌâ
+	 * æ¶ˆæ¯çš„æ ‡é¢˜
 	 */
 	private String Title;
-	
+
 	/**
-	 * ÏûÏ¢µÄÃèÊö
+	 * æ¶ˆæ¯çš„æè¿°
 	 */
 	private String Description;
-	
+
 	/**
-	 * ÒôÀÖÁ´½Ó
+	 * éŸ³ä¹é“¾æ¥
 	 */
 	private String MusicURL;
 
 	/**
-	 * ¸ßÖÊÁ¿ÒôÀÖÁ´½Ó£¬WIFI»·¾³ÓÅÏÈÊ¹ÓÃ¸ÃÁ´½Ó²¥·ÅÒôÀÖ
+	 * é«˜è´¨é‡éŸ³ä¹é“¾æ¥ï¼ŒWIFIç¯å¢ƒä¼˜å…ˆä½¿ç”¨è¯¥é“¾æ¥æ’­æ”¾éŸ³ä¹
 	 */
 	private String HQMusicUrl;
-	
+
 	/**
-	 * ËõÂÔÍ¼µÄÃ½Ìåid£¬Í¨¹ıÉÏ´«¶àÃ½ÌåÎÄ¼ş£¬µÃµ½µÄid
+	 * ç¼©ç•¥å›¾çš„åª’ä½“idï¼Œé€šè¿‡ä¸Šä¼ å¤šåª’ä½“æ–‡ä»¶ï¼Œå¾—åˆ°çš„id
 	 */
 	private String ThumbMediaId;
-	
+
 	/**
-	 * Í¼ÎÄÏûÏ¢¸öÊı£¬ÏŞÖÆÎª10ÌõÒÔÄÚ
+	 * å›¾æ–‡æ¶ˆæ¯ä¸ªæ•°ï¼Œé™åˆ¶ä¸º10æ¡ä»¥å†…
 	 */
 	private String ArticleCount;
-	
+
 	/**
-	 * ¶àÌõÍ¼ÎÄÏûÏ¢ĞÅÏ¢£¬Ä¬ÈÏµÚÒ»¸öitemÎª´óÍ¼,×¢Òâ£¬Èç¹ûÍ¼ÎÄÊı³¬¹ı10£¬Ôò½«»áÎŞÏìÓ¦
+	 * å¤šæ¡å›¾æ–‡æ¶ˆæ¯ä¿¡æ¯ï¼Œé»˜è®¤ç¬¬ä¸€ä¸ªitemä¸ºå¤§å›¾,æ³¨æ„ï¼Œå¦‚æœå›¾æ–‡æ•°è¶…è¿‡10ï¼Œåˆ™å°†ä¼šæ— å“åº”
 	 */
 	private String Articles;
-	
+
 	/**
-	 * Í¼Æ¬Á´½Ó£¬Ö§³ÖJPG¡¢PNG¸ñÊ½£¬½ÏºÃµÄĞ§¹ûÎª´óÍ¼360*200£¬Ğ¡Í¼200*200
+	 * å›¾ç‰‡é“¾æ¥ï¼Œæ”¯æŒJPGã€PNGæ ¼å¼ï¼Œè¾ƒå¥½çš„æ•ˆæœä¸ºå¤§å›¾360*200ï¼Œå°å›¾200*200
 	 */
 	private String PicUrl;
-	
+
 	/**
-	 * µã»÷Í¼ÎÄÏûÏ¢Ìø×ªÁ´½Ó
+	 * ç‚¹å‡»å›¾æ–‡æ¶ˆæ¯è·³è½¬é“¾æ¥
 	 */
 	private String Url;
-	
+
 	/**
-	 * ÓïÒô¸ñÊ½£ºamr
+	 * è¯­éŸ³æ ¼å¼ï¼šamr
 	 */
 	private String Format;
-	
+
 	/**
-	 * ÓïÒôÊ¶±ğ½á¹û£¬UTF8±àÂë
+	 * è¯­éŸ³è¯†åˆ«ç»“æœï¼ŒUTF8ç¼–ç 
 	 */
 	private String Recognition;
-	
+
 	/**
-	 * ÏûÏ¢id£¬64Î»ÕûĞÍ
+	 * æ¶ˆæ¯idï¼Œ64ä½æ•´å‹
 	 */
 	private String MsgID;
-	
+
 	public String getEvent() {
 		return Event;
 	}
@@ -303,7 +303,7 @@ public class WxMessageText {
 	public String getFromUserName() {
 		return FromUserName;
 	}
-	
+
 
 	public void setFromUserName(String fromUserName) {
 		FromUserName = fromUserName;
@@ -347,5 +347,5 @@ public class WxMessageText {
 				+ FromUserName + ", CreateTime=" + CreateTime + ", MsgType="
 				+ MsgType + ", Content=" + Content + ", MsgId=" + MsgId + "]";
 	}
-	
+
 }

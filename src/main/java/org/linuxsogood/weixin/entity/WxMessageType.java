@@ -5,67 +5,67 @@
 package org.linuxsogood.weixin.entity;
 
 /**
- * 
+ *
  * @author gm100861, </br> gm100861@gmail.com
  * @see org.linuxsogood.weixin.entity.WxMessageType
- * @version	V0.0.1-SNAPSHOT, 2015Äê6ÔÂ9ÈÕ ÏÂÎç12:00:58
+ * @version	V0.0.1-SNAPSHOT, 2015å¹´6æœˆ9æ—¥ ä¸‹åˆ12:00:58
  * @description
- * 
+ *
  */
 public class WxMessageType {
-	
+
 	/**
-	 * text ÎÄ±¾ÏûÏ¢ link	
+	 * text æ–‡æœ¬æ¶ˆæ¯ link
 	 */
 	public static final String TEXT = "text";
-	
+
 	/**
-	 * image Í¼Æ¬ÏûÏ¢
+	 * image å›¾ç‰‡æ¶ˆæ¯
 	 */
 	public static final String IMAGE = "image";
-	
+
 	/**
-	 * voice ÓïÒôÏûÏ¢
+	 * voice è¯­éŸ³æ¶ˆæ¯
 	 */
 	public static final String VOICE = "voice";
-	
+
 	/**
-	 * video ÊÓÆµÏûÏ¢
+	 * video è§†é¢‘æ¶ˆæ¯
 	 */
 	public static final String VIDEO = "video";
-	
+
 	/**
-	 * shortvideo Ğ¡ÊÓÆµÏûÏ¢
+	 * shortvideo å°è§†é¢‘æ¶ˆæ¯
 	 */
 	public static final String SHORTVIDEO = "shortvideo";
-	
+
 	/**
-	 * location µØÀíÎ»ÖÃÏûÏ¢
+	 * location åœ°ç†ä½ç½®æ¶ˆæ¯
 	 */
 	public static final String LOCATION = "location";
-	
+
 	/**
-	 *  Á´½ÓÏûÏ¢
+	 *  é“¾æ¥æ¶ˆæ¯
 	 */
 	public static final String LINK = "link";
-	
+
 	/**
-	 * ÇëÇóÏûÏ¢ÀàĞÍ£ºÍÆËÍ
+	 * è¯·æ±‚æ¶ˆæ¯ç±»å‹ï¼šæ¨é€
 	 */
 	public static final String REQ_MESSAGE_TYPE_EVENT = "event";
 
 	/**
-	 * ÊÂ¼şÀàĞÍ£ºsubscribe(¶©ÔÄ)
+	 * äº‹ä»¶ç±»å‹ï¼šsubscribe(è®¢é˜…)
 	 */
 	public static final String EVENT_TYPE_SUBSCRIBE = "subscribe";
 
 	/**
-	 * ÊÂ¼şÀàĞÍ£ºunsubscribe(È¡Ïû¶©ÔÄ)
+	 * äº‹ä»¶ç±»å‹ï¼šunsubscribe(å–æ¶ˆè®¢é˜…)
 	 */
 	public static final String EVENT_TYPE_UNSUBSCRIBE = "unsubscribe";
 
 	/**
-	 * ÊÂ¼şÀàĞÍ£ºCLICK(×Ô¶¨Òå²Ëµ¥µã»÷ÊÂ¼ş)
+	 * äº‹ä»¶ç±»å‹ï¼šCLICK(è‡ªå®šä¹‰èœå•ç‚¹å‡»äº‹ä»¶)
 	 */
 	public static final String EVENT_TYPE_CLICK = "CLICK";
 
