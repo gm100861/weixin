@@ -8,48 +8,47 @@ package org.linuxsogood.weixin.vo;
  * 
  * @author gm100861, </br> gm100861@gmail.com
  * @see org.linuxsogood.weixin.vo.Weather
- * @version	V0.0.1-SNAPSHOT, 2015年6月10日 下午4:46:35
  * @description
  * 
  */
 public class Weather {
 	/**
-	 * 城市
+	 * 鍩庡競
 	 */
 	private String city;
 	
 	/**
-	 * 城市
+	 * 鍩庡競ID
 	 */
 	private String cityid;
 	
 	/**
-	 * 最高气温
+	 * 娓╁害1
 	 */
 	private String temp1;
 	
 	/**
-	 * 最低气温
+	 * 娓╁害2
 	 */
 	private String temp2;
 	
 	/**
-	 * 天气
+	 * 澶╂皵
 	 */
 	private String weather;
 	
 	/**
-	 * 天气图片1
+	 * 鍥剧墖1
 	 */
 	private String img1;
 	
 	/**
-	 * 天气图片2
+	 * 鍥剧墖2
 	 */
 	private String img2;
 	
 	/**
-	 * 发布时间
+	 * 鍙戝竷鏃堕棿
 	 */
 	private String ptime;
 
