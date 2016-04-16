@@ -47,9 +47,12 @@
 		<servlet-name>WeiXin</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>WeiXin</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index</welcome-file>
 	</welcome-file-list>
 
 </web-app>
